@@ -29,6 +29,7 @@ fig = go.Figure(
 st.header("Pie chart")
 st.plotly_chart(fig)
 
+
 # %%
 
 
