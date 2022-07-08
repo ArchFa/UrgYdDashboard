@@ -89,7 +89,12 @@ df6 = (
     .pivot_table(index=["platform"], values='offer_id', aggfunc='count'))
 
 # %%
+df6 = df6.reset_index()
+df6.columns = ['state', 'id']
+
+# %%
 df6
+
 
 # %%
 ###################################### отображение элементов ######################################
@@ -99,7 +104,7 @@ df6
 # st.plotly_chart(fig)
 
 
-fig = px.pie(df6, values=df6, names=df6.index, title='Распределение')
+fig = px.pie(df6, values='id', names='state', title='Распределение')
 st.plotly_chart(fig)
 
 
