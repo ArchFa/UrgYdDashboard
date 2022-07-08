@@ -91,6 +91,8 @@ count_task_platform_june = count_task_platform_june.query('platform != "''"')
 # %%
 # создание круговой диаграммы [Распределение задач по платформе]
 # создание круговой диаграммы [Распределение задач по платформе]
+st.subheader("Количество созданных задач")
+
 fig = px.pie(
     count_task_platform_june,
     values='count_task',
