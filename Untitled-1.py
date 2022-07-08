@@ -7,6 +7,8 @@ import plotly.graph_objects as go
 
 # %%
 st.title("Отчет UrgY")
+container_width = st.get_container_width
+screen_width = st.screen_width
 
 # %%
 countries=['India', 'Australia',
