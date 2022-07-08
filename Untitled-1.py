@@ -7,7 +7,6 @@ import plotly.graph_objects as go
 
 # %%
 st.title("Отчет UrgY")
-st.set_page_config(layout="wide")
 
 # %%
 countries=['India', 'Australia',
