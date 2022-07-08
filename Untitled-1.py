@@ -18,12 +18,12 @@ st.title("Отчет UrgY")
 
 # %%
 # для отладки
-df = pd.read_csv('/Users/arturfattahov/Downloads/Telegram Desktop/offers_statuses (3).txt', sep='|')
+# df = pd.read_csv('/Users/arturfattahov/Downloads/Telegram Desktop/offers_statuses (3).txt', sep='|')
 
 
 # для запуска
-# count_task = "offers_statuses (3).txt"
-# df = pd.read_csv(count_task, sep='|')
+count_task = "offers_statuses (3).txt"
+df = pd.read_csv(count_task, sep='|')
 
 # %%
 # обработка датафрейма
