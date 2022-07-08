@@ -120,7 +120,7 @@ fig = px.pie(
                 "platform": "Платформа",  "count_task": "Количество задач"
             })
 
-col1, col2, col3, col4, col5 = st.columns(5)
+col1, col2, col3, col4, col5, col6 = st.columns(6)
 with col1:
     st.metric(label="Количество созданных задач, июнь", value=all_task_june, delta=difference_task)
 with col2:
@@ -131,7 +131,7 @@ with col4:
     st.metric("WEB", task_june_web, difference_task_web)
 with col5:
     st.metric("WEB", task_june_web, difference_task_web)
-with col5:
+with col6:
     st.metric("Процент задач через приложение", count_mobile_task_june, difference_mobile_task)
 
 
