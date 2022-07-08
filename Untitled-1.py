@@ -39,7 +39,6 @@ df['count_prematch'] = df['count_prematch'].astype(int)
 
 df['platform'] = df['platform'].str.strip()
 
-
 # %%
 # разделение даты
 df_june = df[df['offer_created_at'] > '2022-05-31']
@@ -58,9 +57,6 @@ difference_task = all_task_june - all_task_may
 # количество созданных задач в мобльном приложении
 task_mobile_may = df_may.query('platform == "android"').count()[0] + df_may.query('platform == "ios"').count()[0]
 task_mobile_june = df_june.query('platform == "android"').count()[0] + df_june.query('platform == "ios"').count()[0]
-
-# %%
-
 
 # %%
 # общее количество созданных задач по платформам
@@ -93,6 +89,7 @@ count_task_platform_june = count_task_platform_june.query('platform != "''"')
 ###################################### отображение элементов ######################################
 
 # %%
+# создание круговой диаграммы [Распределение задач по платформе]
 fig = px.pie(
     count_task_platform_june,
     values='count_task',
@@ -102,7 +99,7 @@ fig = px.pie(
                 "platform": "Платформа",  "count_task": "Количество задач"
             })
 
-st.plotly_chart(fig)
+st.metric(label="Количество созданных задач, июнь", value=all_task_june, delta=difference_task)
 
 # %%
 
