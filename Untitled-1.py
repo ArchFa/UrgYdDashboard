@@ -17,7 +17,7 @@ st.title("Отчет UrgY")
 ###################################### рассчеты ######################################
 
 # %%
-# для отладки
+# # для отладки
 # df = pd.read_csv('/Users/arturfattahov/Downloads/Telegram Desktop/offers_statuses (3).txt', sep='|')
 
 
@@ -84,16 +84,22 @@ task_mobile_june = df_june.query('platform == "android"').count()[0] + df_june.q
 
 
 # %%
-
+df6 = (
+    df_june
+    .pivot_table(index=["platform"], values='offer_id', aggfunc='count'))
 
 # %%
-
+df6
 
 # %%
 ###################################### отображение элементов ######################################
 
 # %%
-fig = px.pie(df, values='count_responds', names='platform', title='Распределение ')
+# fig = px.pie(df, values='count_responds', names='platform', title='Распределение')
+# st.plotly_chart(fig)
+
+
+fig = px.pie(df6, values='offer_id', names='df6.index', title='Распределение')
 st.plotly_chart(fig)
 
 
@@ -103,9 +109,6 @@ st.plotly_chart(fig)
 # col1, col2= st.columns(2)
 # col1.st.plotly_chart(fig)
 # col2.metric(label="Процент задач через приложения", value="2.12%", delta="-0.25%")
-
-# %%
-
 
 # %%
 
