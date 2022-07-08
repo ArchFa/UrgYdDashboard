@@ -82,6 +82,8 @@ count_mobile_task_may = count_mobile_task_may.round(2)
 difference_mobile_task = count_mobile_task_june - count_mobile_task_may
 difference_mobile_task = str(difference_mobile_task.round(2)) + "%"
 
+count_mobile_task_june = str(count_mobile_task_june) + "%"
+
 
 # %%
 # сощдание датафрейма для диаграммы общее количество созданных задач по платформам
