@@ -49,9 +49,23 @@ df_may = df[df['offer_created_at'] < '2022-05-31']
 all_task_june = df_june['offer_id'].nunique()
 all_task_may = df_may['offer_id'].nunique()
 
-# разниа в количестве задач
-difference_task = all_task_june - all_task_may
+task_june_ios = df_june.query('platform == "ios"').count()[0]
+task_june_android = df_june.query('platform == "android"').count()[0]
+task_june_admins = df_june.query('platform == "admins"').count()[0]
+task_june_web = df_june.query('platform == "web"').count()[0]
 
+
+task_may_ios = df_may.query('platform == "ios"').count()[0]
+task_may_android = df_may.query('platform == "android"').count()[0]
+task_may_admins = df_may.query('platform == "admins"').count()[0]
+task_may_web = df_may.query('platform == "web"').count()[0]
+
+# разниа в количестве задач, общее
+difference_task = all_task_june - all_task_may
+difference_task_ios = task_june_ios - task_may_ios
+difference_task_android = task_june_android - task_may_android
+difference_task_admins = task_june_admins - task_may_admins
+difference_task_web = task_june_web - task_may_web
 
 # %%
 # количество созданных задач в мобльном приложении
@@ -71,7 +85,7 @@ count_task_platform_june.columns = ['platform', 'count_task']
 count_task_platform_june = count_task_platform_june.query('platform != "''"')
 
 # %%
-
+df_june['platform'].unique()
 
 # %%
 
@@ -89,8 +103,7 @@ count_task_platform_june = count_task_platform_june.query('platform != "''"')
 ###################################### отображение элементов ######################################
 
 # %%
-# создание круговой диаграммы [Распределение задач по платформе]
-# создание круговой диаграммы [Распределение задач по платформе]
+# количество созданных задач
 st.subheader("Количество созданных задач")
 
 fig = px.pie(
@@ -108,7 +121,12 @@ with col1:
 with col2:
     st.plotly_chart(fig)
 
-# %%
 
+with st.expander("Динамика по платформам"):
+     col1, col2, col3, col4 = st.columns(4)
+     col1.metric("iOS", task_june_ios, difference_task_ios)
+     col2.metric("Android", task_june_android, difference_task_android)
+     col3.metric("Admins", task_june_admins, difference_task_admins)
+     col3.metric("WEB", task_june_web, difference_task_web)
 
 
