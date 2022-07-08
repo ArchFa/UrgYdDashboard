@@ -90,6 +90,7 @@ count_task_platform_june = count_task_platform_june.query('platform != "''"')
 
 # %%
 # создание круговой диаграммы [Распределение задач по платформе]
+# создание круговой диаграммы [Распределение задач по платформе]
 fig = px.pie(
     count_task_platform_june,
     values='count_task',
@@ -99,7 +100,11 @@ fig = px.pie(
                 "platform": "Платформа",  "count_task": "Количество задач"
             })
 
-st.metric(label="Количество созданных задач, июнь", value=all_task_june, delta=difference_task)
+col1, col2 = st.columns(2)
+with col1:
+    st.metric(label="Количество созданных задач, июнь", value=all_task_june, delta=difference_task)
+with col2:
+    st.plotly_chart(fig)
 
 # %%
 
