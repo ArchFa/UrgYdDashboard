@@ -93,24 +93,8 @@ task_mobile_june = df_june.query('platform == "android"').count()[0] + df_june.q
 ###################################### отображение элементов ######################################
 
 # %%
-fig = go.Figure(
-    go.Pie(
-    df = df,
-    names = "platform",
-    values = "count_responds",
-    hoverinfo = "label+percent",
-    textinfo = "value"
-))
-
-st.header("Pie chart")
+fig = px.pie(df, values='count_responds', names='platform', title='Распределение ')
 st.plotly_chart(fig)
-
-
-
-
-
-# fig = px.pie(df, values='count_responds', names='platform', title='НАЗВАНИЕ ДИАГРАММЫ')
-# st.plotly_chart(fig)
 
 
 
