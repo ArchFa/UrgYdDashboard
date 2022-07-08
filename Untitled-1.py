@@ -96,7 +96,7 @@ task_mobile_june = df_june.query('platform == "android"').count()[0] + df_june.q
 fig = go.Figure(
     go.Pie(
     df = df,
-    labels = "platform",
+    names = "platform",
     values = "count_responds",
     hoverinfo = "label+percent",
     textinfo = "value"
