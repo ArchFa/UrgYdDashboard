@@ -99,7 +99,7 @@ df6
 # st.plotly_chart(fig)
 
 
-fig = px.pie(df6, values='offer_id', names='df6.index', title='Распределение')
+fig = px.pie(df6, values=df6, names=df6.index, title='Распределение')
 st.plotly_chart(fig)
 
 
