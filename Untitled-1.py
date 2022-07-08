@@ -67,13 +67,24 @@ difference_task_android = str(task_june_android - task_may_android)
 difference_task_admins = str(task_june_admins - task_may_admins)
 difference_task_web = str(task_june_web - task_may_web)
 
+# процент задач через приложение
+count_mobile_task_june = task_mobile_june * 100 / all_task_june
+count_mobile_task_june = count_mobile_task_june.round(2)
+
+count_mobile_task_may = task_mobile_may * 100 / all_task_june
+count_mobile_task_may = count_mobile_task_may.round(2)
+
+difference_mobile_task = count_mobile_task_june - count_mobile_task_may
+difference_mobile_task = str(difference_mobile_task.round(2))
+
+
 # %%
 # количество созданных задач в мобльном приложении
 task_mobile_may = df_may.query('platform == "android"').count()[0] + df_may.query('platform == "ios"').count()[0]
 task_mobile_june = df_june.query('platform == "android"').count()[0] + df_june.query('platform == "ios"').count()[0]
 
 # %%
-# общее количество созданных задач по платформам
+# сощдание датафрейма для диаграммы общее количество созданных задач по платформам
 
 count_task_platform_june = (
     df_june
@@ -83,12 +94,6 @@ count_task_platform_june = count_task_platform_june.reset_index()
 count_task_platform_june.columns = ['platform', 'count_task']
 
 count_task_platform_june = count_task_platform_june.query('platform != "''"')
-
-# %%
-df_june['platform'].unique()
-
-# %%
-
 
 # %%
 
@@ -115,18 +120,22 @@ fig = px.pie(
                 "platform": "Платформа",  "count_task": "Количество задач"
             })
 
-col1, col2 = st.columns(2)
+col1, col2, col3, col4, col5 = st.columns(5)
 with col1:
     st.metric(label="Количество созданных задач, июнь", value=all_task_june, delta=difference_task)
 with col2:
-    st.plotly_chart(fig)
+    st.metric("iOS", task_june_ios, difference_task_ios)
+with col3:
+    st.metric("Android", task_june_android, difference_task_android)
+with col4:
+    st.metric("WEB", task_june_web, difference_task_web)
+with col5:
+    st.metric("WEB", task_june_web, difference_task_web)
+with col5:
+    st.metric("Процент задач через приложение", count_mobile_task_june, difference_mobile_task)
 
 
-with st.expander("Динамика по платформам"):
-     col1, col2, col3, col4 = st.columns(4)
-     col1.metric("iOS", task_june_ios, difference_task_ios)
-     col2.metric("Android", task_june_android, difference_task_android)
-     col3.metric("Admins", task_june_admins, difference_task_admins)
-     col4.metric("WEB", task_june_web, difference_task_web)
+
+st.plotly_chart(fig)
 
 
