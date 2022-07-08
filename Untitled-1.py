@@ -61,11 +61,11 @@ task_may_admins = df_may.query('platform == "admins"').count()[0]
 task_may_web = df_may.query('platform == "web"').count()[0]
 
 # разниа в количестве задач, общее
-difference_task = all_task_june - all_task_may
-difference_task_ios = task_june_ios - task_may_ios
-difference_task_android = task_june_android - task_may_android
-difference_task_admins = task_june_admins - task_may_admins
-difference_task_web = task_june_web - task_may_web
+difference_task = str(all_task_june - all_task_may)
+difference_task_ios = str(task_june_ios - task_may_ios)
+difference_task_android = str(task_june_android - task_may_android)
+difference_task_admins = str(task_june_admins - task_may_admins)
+difference_task_web = str(task_june_web - task_may_web)
 
 # %%
 # количество созданных задач в мобльном приложении
