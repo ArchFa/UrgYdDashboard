@@ -80,7 +80,7 @@ count_mobile_task_may = task_mobile_may * 100 / all_task_june
 count_mobile_task_may = count_mobile_task_may.round(2)
 
 difference_mobile_task = count_mobile_task_june - count_mobile_task_may
-difference_mobile_task = str(difference_mobile_task.round(2))
+difference_mobile_task = str(difference_mobile_task.round(2)) + "%"
 
 
 # %%
