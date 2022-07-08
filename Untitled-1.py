@@ -63,57 +63,45 @@ task_mobile_june = df_june.query('platform == "android"').count()[0] + df_june.q
 
 
 # %%
+# общее количество созданных задач по платформам
 
-
-# %%
-
-
-# %%
-
-
-# %%
-
-
-# %%
-
-
-# %%
-
-
-# %%
-
-
-# %%
-df6 = (
+count_task_platform_june = (
     df_june
     .pivot_table(index=["platform"], values='offer_id', aggfunc='count'))
 
-# %%
-df6 = df6.reset_index()
-df6.columns = ['state', 'id']
+count_task_platform_june = count_task_platform_june.reset_index()
+count_task_platform_june.columns = ['platform', 'count_task']
+
+count_task_platform_june = count_task_platform_june.query('platform != "''"')
 
 # %%
-df6
+
+
+# %%
+
+
+# %%
+
+
+# %%
+
+
+# %%
 
 
 # %%
 ###################################### отображение элементов ######################################
 
 # %%
-# fig = px.pie(df, values='count_responds', names='platform', title='Распределение')
-# st.plotly_chart(fig)
-
-
-fig = px.pie(df6, values='id', names='state', title='Распределение')
+fig = px.pie(
+    count_task_platform_june,
+    values='id',
+    names='count_task',
+    title='Распределение задач по платформе',
+    labels={
+                "platform": "Платформа",  "count_task": "Количество задач"
+            })
 st.plotly_chart(fig)
-
-
-
-
-
-# col1, col2= st.columns(2)
-# col1.st.plotly_chart(fig)
-# col2.metric(label="Процент задач через приложения", value="2.12%", delta="-0.25%")
 
 # %%
 
