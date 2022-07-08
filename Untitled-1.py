@@ -127,6 +127,6 @@ with st.expander("Динамика по платформам"):
      col1.metric("iOS", task_june_ios, difference_task_ios)
      col2.metric("Android", task_june_android, difference_task_android)
      col3.metric("Admins", task_june_admins, difference_task_admins)
-     col3.metric("WEB", task_june_web, difference_task_web)
+     col4.metric("WEB", task_june_web, difference_task_web)
 
 
