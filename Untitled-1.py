@@ -95,12 +95,13 @@ count_task_platform_june = count_task_platform_june.query('platform != "''"')
 # %%
 fig = px.pie(
     count_task_platform_june,
-    values='platform',
-    names='count_task',
+    values='count_task',
+    names='platform',
     title='Распределение задач по платформе',
     labels={
                 "platform": "Платформа",  "count_task": "Количество задач"
             })
+
 st.plotly_chart(fig)
 
 # %%
