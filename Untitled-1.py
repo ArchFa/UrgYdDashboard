@@ -45,6 +45,11 @@ df_june = df[df['offer_created_at'] > '2022-05-31']
 df_may = df[df['offer_created_at'] < '2022-05-31']
 
 # %%
+# количество созданных задач в мобльном приложении
+task_mobile_may = df_may.query('platform == "android"').count()[0] + df_may.query('platform == "ios"').count()[0]
+task_mobile_june = df_june.query('platform == "android"').count()[0] + df_june.query('platform == "ios"').count()[0]
+
+# %%
 # общее количество задач
 all_task_june = df_june['offer_id'].nunique()
 all_task_may = df_may['offer_id'].nunique()
@@ -77,11 +82,6 @@ count_mobile_task_may = count_mobile_task_may.round(2)
 difference_mobile_task = count_mobile_task_june - count_mobile_task_may
 difference_mobile_task = str(difference_mobile_task.round(2))
 
-
-# %%
-# количество созданных задач в мобльном приложении
-task_mobile_may = df_may.query('platform == "android"').count()[0] + df_may.query('platform == "ios"').count()[0]
-task_mobile_june = df_june.query('platform == "android"').count()[0] + df_june.query('platform == "ios"').count()[0]
 
 # %%
 # сощдание датафрейма для диаграммы общее количество созданных задач по платформам
