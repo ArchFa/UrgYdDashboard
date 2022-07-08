@@ -95,7 +95,7 @@ count_task_platform_june = count_task_platform_june.query('platform != "''"')
 # %%
 fig = px.pie(
     count_task_platform_june,
-    values='id',
+    values='platform',
     names='count_task',
     title='Распределение задач по платформе',
     labels={
